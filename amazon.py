@@ -1,5 +1,4 @@
 from helper import NetworkHelper
-from tabulate import tabulate
 from DataLoader import DataLoader
 import sys
 class Tee(object):
