@@ -1,7 +1,3 @@
-Here's a README template for the project based on the provided information:
-
----
-
 # Social Network Analysis with Barabasi-Albert and Watts-Strogatz Models
 
 This project provides tools for analyzing social networks using two popular network generation models: **Barabasi-Albert (BA)** and **Watts-Strogatz**. The repository includes scripts for analyzing datasets from **Amazon** and **Twitch**, comparing various network metrics, and logging results for further analysis.
