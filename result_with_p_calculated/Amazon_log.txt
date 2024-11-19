@@ -6,14 +6,14 @@ Average Path Length By Taking 10% Nodes In Original: 3.383270911360799
 Average Path Length By Taking 20% Nodes In Original: 30.932576910261755
 Average Path Length By Using Random Walk Algorithm: 8.0023
 Clustering Coefficient:  0.3967463932787655
-========================================= Watts-Strogatz ======================================
-Probability p: 0.6654470234725003
-Average Path Length By Taking 10% Nodes In Original: 3.868131868131868
-Average Path Length By Taking 20% Nodes In Original: 7.870748299319728
-Average Path Length By Using Random Walk Algorithm: 10.1755
-Clustering Coefficient:  0.020242081382909647
 ========================================= Barabasi-Albert ======================================
 Average Path Length By Taking 10% Nodes In Original: 6.239588201692891
 Average Path Length By Taking 20% Nodes In Original: 13.349704023867645
 Average Path Length By Using Random Walk Algorithm: 6.1023
 Clustering Coefficient:  0.00026639380318085166
+========================================= Watts-Strogatz ======================================
+Probability p: 0.6654470234725003
+Average Path Length By Taking 10% Nodes In Original: 3.868131868131868
+Average Path Length By Taking 20% Nodes In Original: 7.870748299319728
+Average Path Length By Using Random Walk Algorithm: 10.1755
+Clustering Coefficient:  0.20242081382909647

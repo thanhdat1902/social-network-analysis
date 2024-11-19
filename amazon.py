@@ -53,7 +53,7 @@ def barabasi():
 
 print("========================================= Amazon ======================================")
 original()
-# barabasi()
+barabasi()
 watts()
 
 

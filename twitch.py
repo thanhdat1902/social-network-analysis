@@ -54,7 +54,7 @@ def barabasi():
 
 print("========================================= Twitch ======================================")
 original()
-# barabasi()
+barabasi()
 watts()
 
 
