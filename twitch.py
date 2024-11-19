@@ -2,25 +2,19 @@ from helper import NetworkHelper
 from tabulate import tabulate
 from DataLoader import DataLoader
 import sys
-class Tee(object):
-    def __init__(self, *files):
-        self.files = files
-    def write(self, obj):
-        for f in self.files:
-            f.write(obj)
+import logging
+TEST_NAME = "Twitch"
+sys.stdout = logging.Logger("./" + TEST_NAME + "_log.txt")
 
-f = open('test_twitch.log', 'w')
-backup = sys.stdout
-sys.stdout = Tee(sys.stdout, f)
 
 networkHelper = NetworkHelper()
-originalNetworkData = DataLoader("large_twitch_edges.csv", "Twitch").buildNetworkXGraph()
+originalNetworkData = DataLoader("data/large_twitch_edges.csv", "Twitch").buildNetworkXGraph()
 GccNetwork = networkHelper.largestConnectedComponent(originalNetworkData)
 avgDegreeOrg = None
 averageClusteringCoefficientOrg = None
 
 def original():
-    global avgDegreeOrg
+    global avgDegreeOrg, averageClusteringCoefficientOrg
     print("========================================= Original Network ======================================")
     avgDegreeOrg = networkHelper.averageDegrees(GccNetwork)
     averageClusteringCoefficientOrg = networkHelper.averageClusteringCoefficient(GccNetwork)
@@ -33,6 +27,7 @@ def original():
 
 
 def watts():
+    global avgDegreeOrg, averageClusteringCoefficientOrg
     if avgDegreeOrg is not None and averageClusteringCoefficientOrg is not None:
         d = int(avgDegreeOrg)
         c0 = 3*(d-2) / (4*(d-1))
@@ -48,6 +43,7 @@ def watts():
         print("Error with original network")
 
 def barabasi():
+    global avgDegreeOrg
     barabasiModel = networkHelper.barabasi_albert_graph(len(GccNetwork), (int(avgDegreeOrg) // 2))
     print("========================================= Barabasi-Albert ======================================")
     print("Average Path Length By Taking 10% Nodes In Original:" , networkHelper.averagePathLengthByPercentage(barabasiModel))
@@ -58,7 +54,7 @@ def barabasi():
 
 print("========================================= Twitch ======================================")
 original()
-barabasi()
+# barabasi()
 watts()
 
 

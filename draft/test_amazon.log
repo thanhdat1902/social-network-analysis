@@ -1,0 +1,14 @@
+========================================= Amazon ======================================
+========================================= Original Network ======================================
+Size:  334863
+Average Degree:  5.529855493141971
+Average Path Length By Taking 10% Nodes In Original: 6.018148820326679
+Average Path Length By Taking 20% Nodes In Original: 33.22111826150596
+Average Path Length By Using Random Walk Algorithm: 8.0124
+Clustering Coefficient:  0.3967463932787655
+========================================= Barabasi-Albert ======================================
+Average Path Length By Taking 10% Nodes In Original: 6.239588201692891
+Average Path Length By Taking 20% Nodes In Original: 13.349704023867645
+Average Path Length By Using Random Walk Algorithm: 6.1023
+Clustering Coefficient:  0.00026639380318085166
+Error with original network

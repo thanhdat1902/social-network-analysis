@@ -1,25 +1,19 @@
 from helper import NetworkHelper
 from DataLoader import DataLoader
 import sys
-class Tee(object):
-    def __init__(self, *files):
-        self.files = files
-    def write(self, obj):
-        for f in self.files:
-            f.write(obj)
+import logging
+TEST_NAME = "Amazon"
+sys.stdout = logging.Logger("./" + TEST_NAME + "_log.txt")
 
-f = open('test_amazon.log', 'w')
-backup = sys.stdout
-sys.stdout = Tee(sys.stdout, f)
 
 networkHelper = NetworkHelper()
-originalNetworkData = DataLoader("com-amazon.ungraph.txt", "Amazon").buildNetworkXGraph()
+originalNetworkData = DataLoader("data/com-amazon.ungraph.txt", "Amazon").buildNetworkXGraph()
 GccNetwork = networkHelper.largestConnectedComponent(originalNetworkData)
 avgDegreeOrg = None
 averageClusteringCoefficientOrg = None
 
 def original():
-    global avgDegreeOrg
+    global avgDegreeOrg,averageClusteringCoefficientOrg
     print("========================================= Original Network ======================================")
     avgDegreeOrg = networkHelper.averageDegrees(GccNetwork)
     averageClusteringCoefficientOrg = networkHelper.averageClusteringCoefficient(GccNetwork)
@@ -32,6 +26,7 @@ def original():
 
 
 def watts():
+    global avgDegreeOrg, averageClusteringCoefficientOrg
     if avgDegreeOrg != None and averageClusteringCoefficientOrg != None:
         d = int(avgDegreeOrg)
         c0 = 3 * (d - 2) / (4 * (d - 1))
@@ -47,6 +42,7 @@ def watts():
         print("Error with original network")
 
 def barabasi():
+    global avgDegreeOrg
     barabasiModel = networkHelper.barabasi_albert_graph(len(GccNetwork), (int(avgDegreeOrg) // 2))
     print("========================================= Barabasi-Albert ======================================")
     print("Average Path Length By Taking 10% Nodes In Original:" , networkHelper.averagePathLengthByPercentage(barabasiModel))
@@ -57,7 +53,7 @@ def barabasi():
 
 print("========================================= Amazon ======================================")
 original()
-barabasi()
+# barabasi()
 watts()
 
 
